@@ -1,19 +1,19 @@
-
 <div align="center">
 
-# 🚖 NYC Taxi Trip Analysis
-### Exploratory Data Analysis (EDA) using Python
+# 🚖 NYC Taxi Analytics & Demand Forecasting
+### Exploratory Data Analysis and Machine Learning using Python
 
 <img src="https://img.shields.io/badge/Python-3.12-blue?style=for-the-badge&logo=python">
 <img src="https://img.shields.io/badge/Pandas-Data%20Analysis-green?style=for-the-badge">
-<img src="https://img.shields.io/badge/Seaborn-Visualization-orange?style=for-the-badge">
+<img src="https://img.shields.io/badge/Scikit--Learn-Machine%20Learning-orange?style=for-the-badge">
 <img src="https://img.shields.io/badge/Matplotlib-Charts-red?style=for-the-badge">
+<img src="https://img.shields.io/badge/Seaborn-Visualization-yellow?style=for-the-badge">
 
 ---
 
 ### 📊 Summer AI Internship 2026 Project
 
-A complete Exploratory Data Analysis (EDA) project on the **NYC Yellow Taxi Trip Records** dataset. This project demonstrates professional data cleaning, statistical analysis, visualization, and business insight generation using Python.
+An end-to-end Data Analytics and Machine Learning project built on the **NYC Yellow Taxi Trip Records** dataset. The project covers data cleaning, exploratory data analysis, feature engineering, demand forecasting, model evaluation, and business insight generation.
 
 </div>
 
@@ -21,23 +21,45 @@ A complete Exploratory Data Analysis (EDA) project on the **NYC Yellow Taxi Trip
 
 # 📌 Project Overview
 
-This project analyzes one month of **NYC Yellow Taxi Trip Records** to understand travel patterns, passenger behavior, fare distributions, payment methods, and trip characteristics.
+This repository presents an end-to-end data analytics and machine learning pipeline using the NYC Yellow Taxi Trip Records dataset.
 
-The objective is not only to visualize the data but also to produce meaningful business insights through a structured and reproducible data analysis pipeline.
+The project is divided into two major tasks:
+
+## Task 1: Exploratory Data Analysis (EDA)
+
+- Data Cleaning and Validation
+- Missing Value Handling
+- Outlier Detection
+- Statistical Analysis
+- Data Visualization
+- Business Insight Generation
+
+## Task 2: Demand Forecasting
+
+- Hourly Pickup Aggregation
+- Feature Engineering
+- Baseline Forecasting
+- Linear Regression Model
+- Random Forest Model
+- Model Evaluation
+- Failure Analysis
+
+The project demonstrates the complete lifecycle of a real-world data science project, from understanding historical taxi patterns to predicting future taxi demand.
 
 ---
 
 # 🎯 Project Objectives
 
-- Load and validate the raw dataset
-- Clean and preprocess the data
-- Handle missing and invalid values
+- Load and validate raw taxi trip data
+- Clean and preprocess the dataset
 - Perform Exploratory Data Analysis (EDA)
-- Detect and analyze outliers
-- Generate statistical summaries
-- Create professional visualizations
-- Answer business-related analytical questions
-- Produce reusable, well-documented Python code
+- Generate business insights and visualizations
+- Aggregate taxi pickups at hourly granularity
+- Create time-based and lag features
+- Build forecasting models
+- Evaluate model performance
+- Perform failure analysis
+- Develop an end-to-end analytics pipeline
 
 ---
 
@@ -49,29 +71,8 @@ The objective is not only to visualize the data but also to produce meaningful b
 | Source | NYC Taxi & Limousine Commission (TLC) |
 | File Format | Parquet (.parquet) |
 | Data Type | Real-world Transportation Data |
-| Analysis Type | Exploratory Data Analysis (EDA) |
-
----
-
-# 📊 Dataset Features
-
-The dataset contains information such as:
-
-- Vendor ID
-- Pickup Date & Time
-- Dropoff Date & Time
-- Passenger Count
-- Trip Distance
-- Fare Amount
-- Tip Amount
-- Total Amount
-- Payment Type
-- Rate Code
-- Airport Fee
-- Congestion Surcharge
-- Extra Charges
-
-Each row represents **one completed taxi trip**.
+| Analysis Type | Exploratory Data Analysis & Demand Forecasting |
+| Forecast Target | Hourly Taxi Pickup Demand |
 
 ---
 
@@ -84,8 +85,9 @@ Each row represents **one completed taxi trip**.
 | NumPy | Numerical Computation |
 | Matplotlib | Data Visualization |
 | Seaborn | Statistical Visualization |
-| SciPy | Statistical Testing |
+| Scikit-learn | Machine Learning |
 | PyArrow | Reading Parquet Files |
+| Joblib | Model Serialization |
 | Git | Version Control |
 | GitHub | Project Hosting |
 
@@ -102,15 +104,21 @@ nyc-taxi-trip-analysis/
 │   └── processed/
 │
 ├── images/
-│
 ├── reports/
+│
+├── models/
+│   └── random_forest.pkl
 │
 ├── src/
 │   ├── data_cleaning.py
 │   ├── visualization.py
+│   ├── features.py
+│   ├── models.py
 │   └── utils.py
 │
 ├── main.py
+├── task2_main.py
+├── predict_cli.py
 ├── README.md
 └── pyproject.toml
 ```
@@ -120,118 +128,107 @@ nyc-taxi-trip-analysis/
 # ⚙️ Project Workflow
 
 ```text
-Download Dataset
+Raw NYC Taxi Dataset
         │
         ▼
-Load Dataset
+Task 1: Exploratory Data Analysis
+        │
+        ├── Data Validation
+        ├── Data Cleaning
+        ├── Missing Value Handling
+        ├── Outlier Detection
+        ├── Visualizations
+        └── Business Insights
         │
         ▼
-Validate File
+Cleaned Dataset
         │
         ▼
-Data Cleaning
+Task 2: Demand Forecasting
+        │
+        ├── Hourly Aggregation
+        ├── Feature Engineering
+        ├── Baseline Model
+        ├── Linear Regression
+        ├── Random Forest
+        ├── RMSE & MAE Evaluation
+        └── Failure Analysis
         │
         ▼
-Handle Missing Values
-        │
-        ▼
-Remove Duplicates
-        │
-        ▼
-Convert Data Types
-        │
-        ▼
-Remove Invalid Records
-        │
-        ▼
-Save Clean Dataset
-        │
-        ▼
-Exploratory Data Analysis
-        │
-        ▼
-Outlier Detection
-        │
-        ▼
-Business Analysis
-        │
-        ▼
-Generate Report
+Demand Predictions & Reports
 ```
 
 ---
 
-# 🧹 Data Cleaning Process
+# 📈 Task 1 – Exploratory Data Analysis (EDA)
 
-The following preprocessing steps are performed:
+✔ Data Cleaning
 
-- Duplicate Row Removal
-- Missing Value Analysis
-- Missing Value Handling
-- Data Type Conversion
-- Invalid Fare Removal
-- Invalid Distance Removal
-- Impossible Timestamp Detection
-- Passenger Validation
-- Dataset Validation
+✔ Missing Value Handling
 
----
+✔ Duplicate Removal
 
-# 📈 Exploratory Data Analysis
+✔ Outlier Detection
 
-## Univariate Analysis
+✔ Statistical Analysis
 
-✔ Histograms
+✔ Data Visualization
 
-✔ KDE Curves
-
-✔ Count Plots
-
-✔ Distribution Analysis
-
-✔ Summary Statistics
+✔ Business Insight Generation
 
 ---
 
-## Bivariate Analysis
+# 🤖 Task 2 – Demand Forecasting
 
-✔ Scatter Plots
+The forecasting module predicts the number of taxi pickups expected during the next hour.
 
-✔ Correlation Analysis
+✔ Hourly Pickup Aggregation
 
-✔ Box Plots
+✔ Time-Based Feature Engineering
 
-✔ Violin Plots
+✔ Lag Feature Creation
 
-✔ Numerical vs Categorical Analysis
+✔ Baseline Forecasting
 
----
+✔ Linear Regression Model
 
-# 🚨 Outlier Detection
+✔ Random Forest Model
 
-Outliers are detected using:
+✔ RMSE and MAE Evaluation
 
-- IQR Method
-
-The project reports:
-
-- Number of outliers
-- Percentage of outliers
-- Treatment strategy
-- Justification
+✔ Failure Analysis
 
 ---
 
-# 💼 Business Questions Answered
+# 🧠 Features Used for Forecasting
 
-This project answers the following analytical questions:
+- Hour of Day
+- Day of Week
+- Weekend Indicator
+- Previous Hour Pickup Count
+- Previous Day Pickup Count
+- Previous Week Pickup Count
 
-- Peak demand hour
-- Slowest demand hour
-- Weekend vs Weekday fare comparison
-- Highest average tip payment method
-- Average trip duration by weekday
-- Trips under 2 miles vs trips over 2 miles
+---
+
+# 📊 Machine Learning Models
+
+| Model | Purpose |
+|-------|----------|
+| Naive Baseline | Uses last week's demand as a benchmark |
+| Linear Regression | Learns linear demand patterns |
+| Random Forest | Learns complex and non-linear demand patterns |
+
+---
+
+# 📏 Evaluation Metrics
+
+The forecasting models are evaluated using:
+
+- Mean Absolute Error (MAE)
+- Root Mean Squared Error (RMSE)
+
+Lower metric values indicate better prediction performance.
 
 ---
 
@@ -241,10 +238,12 @@ The project automatically generates:
 
 - Cleaned Dataset
 - Statistical Summary
-- Distribution Graphs
-- Correlation Graphs
-- Business Insight Charts
-- Final Analysis Report
+- Distribution Charts
+- Business Insight Graphs
+- Engineered Features
+- Demand Forecasts
+- Evaluation Reports
+- Failure Analysis Reports
 
 ---
 
@@ -270,8 +269,6 @@ python -m venv venv
 
 Activate Environment
 
-Windows
-
 ```bash
 venv\Scripts\activate
 ```
@@ -279,15 +276,29 @@ venv\Scripts\activate
 Install Dependencies
 
 ```bash
-pip install pandas numpy matplotlib seaborn scipy pyarrow
+pip install pandas numpy matplotlib seaborn scikit-learn pyarrow joblib
 ```
 
 ---
 
 # ▶ Run Project
 
+### Task 1 – EDA
+
 ```bash
 python main.py
+```
+
+### Task 2 – Demand Forecasting
+
+```bash
+python task2_main.py
+```
+
+### Prediction CLI
+
+```bash
+python predict_cli.py
 ```
 
 ---
@@ -299,9 +310,14 @@ python main.py
 - Exploratory Data Analysis
 - Data Visualization
 - Statistical Analysis
+- Feature Engineering
+- Time-Series Forecasting
+- Machine Learning
+- Failure Analysis
+- Model Evaluation
 - Python Programming
 - Git & GitHub
-- Software Project Structure
+- End-to-End Data Science Pipeline Development
 
 ---
 
@@ -311,7 +327,7 @@ python main.py
 
 Computer Science Student
 
-Summer AI Internship 2026
+
 
 GitHub:
 https://github.com/SaadKhawer
@@ -320,8 +336,8 @@ https://github.com/SaadKhawer
 
 <div align="center">
 
-### ⭐ If you found this project useful, consider giving it a Star!
+### ⭐ End-to-End NYC Taxi Analytics & Demand Forecasting Project
 
-Made with ❤️ using Python
+Made with ❤️ using Python, Data Analysis and Machine Learning 🚕🤖📊
 
 </div>
