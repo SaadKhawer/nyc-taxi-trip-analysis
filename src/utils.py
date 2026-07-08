@@ -37,6 +37,8 @@ def download_file(url: str, dest_path: str) -> None:
             f.write(chunk)
     logger.info(f"Download complete.")
 
+
+# Verify that the downloaded file exists, is not empty, and log its size before further processing.
 def validate_file(file_path: str) -> bool:
     """
     Validate that the file exists and verify its size.

@@ -26,7 +26,7 @@ def plot_univariate(df: pd.DataFrame, output_dir: str):
     for col in numerics:
         if col in df.columns:
             plt.figure(figsize=(10, 6))
-            sns.histplot(df_sample[col], bins=50, kde=True, color='skyblue')
+            sns.histplot(df_sample[col], bins=50, kde=True, color='skyblue')  # pyright: ignore
             plt.title(f'Distribution of {col}')
             plt.xlabel(col)
             plt.ylabel('Frequency')
@@ -85,7 +85,7 @@ def plot_business_answers(df: pd.DataFrame, output_dir: str):
     logger.info("Generating business answer plots...")
     
     # 1. Peak demand hour vs. slowest hour
-    df['hour'] = df['tpep_pickup_datetime'].dt.hour
+    df['hour'] = df['tpep_pickup_datetime'].dt.hour  # pyright: ignore
     hourly_counts = df['hour'].value_counts().sort_index()
     plt.figure(figsize=(12, 6))
     sns.barplot(x=hourly_counts.index, y=hourly_counts.values, palette='coolwarm')
@@ -97,7 +97,7 @@ def plot_business_answers(df: pd.DataFrame, output_dir: str):
     plt.close()
     
     # 2. Weekend vs weekday avg fare
-    df['day_of_week'] = df['tpep_pickup_datetime'].dt.dayofweek
+    df['day_of_week'] = df['tpep_pickup_datetime'].dt.dayofweek  # pyright: ignore
     df['is_weekend'] = df['day_of_week'] >= 5
     plt.figure(figsize=(8, 6))
     sns.barplot(x='is_weekend', y='fare_amount', data=df, errorbar='ci', palette='pastel')
@@ -126,7 +126,7 @@ def plot_business_answers(df: pd.DataFrame, output_dir: str):
     # 4. Avg trip duration by day-of-week
     day_mapping = {0: 'Mon', 1: 'Tue', 2: 'Wed', 3: 'Thu', 4: 'Fri', 5: 'Sat', 6: 'Sun'}
     df['day_name'] = df['day_of_week'].map(day_mapping)
-    duration_dow = df.groupby('day_name')['trip_duration_mins'].mean().reindex(day_mapping.values()).reset_index()
+    duration_dow = df.groupby('day_name')['trip_duration_mins'].mean().reindex(day_mapping.values()).reset_index()  # pyright: ignore
     
     plt.figure(figsize=(10, 6))
     sns.barplot(x='day_name', y='trip_duration_mins', data=duration_dow, palette='crest')

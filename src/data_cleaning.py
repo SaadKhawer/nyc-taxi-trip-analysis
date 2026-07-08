@@ -28,6 +28,7 @@ def remove_duplicates(df: pd.DataFrame) -> pd.DataFrame:
     logger.info(f"Found {duplicates} duplicate rows.")
     return df.drop_duplicates()
 
+# for setting the datatype correctly
 def cast_data_types(df: pd.DataFrame) -> pd.DataFrame:
     """Cast columns to appropriate data types."""
     # Datetime casting
