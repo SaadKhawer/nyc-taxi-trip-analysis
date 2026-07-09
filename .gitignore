@@ -12,3 +12,6 @@ images/
 *.png
 *.jpg
 .env
+node_modules/
+package-lock.json
+package.json
